@@ -46,17 +46,17 @@ pipeline{
                script {
 				if("${env.ENVIRONMENT}".contains("dev")){
 					withAWS(credentials: 'omni-aws-creds'){
-					sh "terraform plan -no-color -var-file='dev.tfvars'"
+					sh "terraform plan -no-color -var-file='tfvars/dev.tfvars'"
 					}
 				}
 				else if("${env.ENVIRONMENT}".contains("prod")){
 					withAWS(credentials: 'omni-aws-creds'){
-					sh "terraform plan -no-color -var-file='prod.tfvars'"
+					sh "terraform plan -no-color -var-file='tfvars/prod.tfvars'"
 					}
 				}
 				else if("${env.ENVIRONMENT}".contains("stg")){
 					withAWS(credentials: 'omni-aws-creds'){
-					sh "terraform plan -no-color -var-file='stg.tfvars'"
+					sh "terraform plan -no-color -var-file='tfvars/stg.tfvars'"
 					}
 				}
                     
